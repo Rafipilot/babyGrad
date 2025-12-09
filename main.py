@@ -37,6 +37,17 @@ class Tensor:
 
         out._backward = _backward
         return out
+    
+    def matmul(self, other):
+        other = other if isinstance(other, Tensor) else Tensor(other)
+        out = Tensor(self.data @ other.data, (self, other), _op="+")
+
+        def _backward():
+            self.grad += out.grad @ other.data.T
+            other.grad += out.grad.T @ self.data
+
+        out._backward = _backward
+        return out
 
     def backward(self):
         topo = []
