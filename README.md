@@ -1,6 +1,6 @@
 # A basic autograd implementation
 
-Contains support for addition, subtraction, multiplication and matrix multiplication. This will be extended overtime and used for my ML projects. 
+Contains support for core arithmetic operations. This will be extended overtime and used for my ML projects. 
 
 The code is centered around a Tensor class build on numpy and contains all the operations.
 
@@ -138,7 +138,7 @@ These are pretty self-explanatory
   - backward(loss) just invokes babyGrad.Tensor.backward()
   - optimize(lr) optimizes all of the parameters in the neural network by adjusting them by `-lr*grad`
 
-### 4) Putting it all together: A tiny training script
+### 4) Putting it all together: A tiny neural network!
 ```python
 import numpy as np
 from babyGrad.grad import Tensor
