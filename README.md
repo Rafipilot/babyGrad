@@ -19,11 +19,9 @@ This will be extended over time and used in my ML projects.
 ## Documentation
 
 ### 1) Installation
-
-For now, keep the full code in a local file (for example: `main.py`) and make sure you have NumPy installed:
-
+Install the package with pip!
 ```bash
-pip install numpy
+  pip install git+https://github.com/Rafipilot/babyGrad
 ```
 
 ---
@@ -34,7 +32,7 @@ Import the `Tensor` class and create tensors from Python numbers, lists, or NumP
 
 ```python
 import numpy as np
-from main import Tensor
+from babyGrad.grad import Tensor
 
 a = Tensor(3.0)                      # scalar
 b = Tensor([1, 2, 3])                # vector
@@ -66,12 +64,6 @@ print("z:", z.data)     # 13.0
 print("dz/dx:", x.grad) # 5.0
 print("dz/dy:", y.grad) # 2.0
 ```
-
-Notes:
-
-* This minimal version **does not support broadcasting** (except scalar with tensor).
-* Shapes must match for elementwise ops, or one side must be a scalar.
-
 ---
 
 ### 4) Matrix multiplication
@@ -103,7 +95,7 @@ print("dC/dB:\n", B.grad)
 `backward()`:
 
 * builds a topological ordering of the computation graph
-* sets the gradient of the final tensor to `1` (or ones with the same shape)
+* sets the gradient of the final tensor to `1` (dx/dx is 1!)
 * propagates gradients backward through stored `_backward()` functions
 
 For meaningful training, you normally call `backward()` on a **scalar loss**.
@@ -114,12 +106,7 @@ Right now, this implementation allows calling `backward()` on non-scalar tensors
 ### 6) Current limitations (by design)
 
 * No broadcasting (except scalar with tensor)
-* No division, power, exp/log, relu/sigmoid, sum/mean, indexing, etc. yet
 * `matmul` is limited to 2D matrices only
-* No gradient reset helper yet (you’ll manually zero `grad` when needed)
 
 ---
 
-Notes: the minimalNN.py file shows how the code can be used to create a basic artifical neural network. 
-
-If you want, I can also add a tiny `examples.py` and a `zero_grad()` helper method while keeping everything minimal.
