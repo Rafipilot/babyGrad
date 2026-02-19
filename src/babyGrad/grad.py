@@ -7,6 +7,10 @@ def _reduce_to_shape(grad, shape):
         return grad
     if shape == ():
         return np.array(grad.sum(), dtype=float)
+    while grad.ndim > len(shape):
+        grad = grad.sum(axis=0)
+
+    return grad.reshape(shape)
 
 class Tensor:
     def __init__(self, data, _children=(), _op=""):

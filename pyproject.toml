@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "babygrad"
+version = "0.1.0"
+description = "A tiny autograd and neural network library for learning backprop"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Rafayel Latif"}
+]
+
+dependencies = [
+  "numpy>=1.22"
+]
+
+[project.urls]
+Homepage = "https://github.com/Rafipilot/babygrad"
+Source = "https://github.com/Rafipilot/babygrad"
+
+[tool.setuptools.packages.find]
+where = ["src"]
