@@ -13,7 +13,7 @@ Supported core operations:
 * Matrix multiplication (`matmul` / `@`) for 2D tensors
 * Elementwise `exp()`
 
-This will be extended over time and used in my ML projects.
+This will be extended over time.
 
 ---
 
@@ -179,6 +179,10 @@ for xi, yi in zip(x.data, y.data):
     pred = nn.forward(xi.reshape(1, -1))
     print("Input:", xi, "Pred:", pred.data, "Target:", yi)
 ```
+
+## Future work
+1) Build out the nn_module.py to support my types of neural networks (convolutional, etc) and features (dropout. different optimizers, etc)
+2) Integrate GPU offloading
 
 Notes: This is still very early stage so expect things to break!
 
